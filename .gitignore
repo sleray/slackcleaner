@@ -13,6 +13,7 @@
 .settings
 .classpath
 .metadata
+target
 
 # Packages #
 ############
