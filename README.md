@@ -2,10 +2,11 @@
 
 Welcome to slack cleaner batch !
 
-if your have a channel full of messages in slack that you want to clear, slack free plan doesn't offer a handy solution.
+If your have a channel full of messages in slack that you want to clear, slack free plan doesn't offer a handy solution.
 
 With their api, we can loop on all the messages to remove them.
-unfortunately, we only can call api once each second to avoid a http rate limite exception. So run the batch, get a coffee and log in slack to see messages disappearing slowly :)
+
+Unfortunately, we only can call api once each second to avoid a http rate limit exception. So run the batch, get a coffee and log in slack to see messages disappearing slowly :)
 
 ## Prerequisites
 there is two mandatory arguments for the main method of the launcher : **token** and **channelId**
