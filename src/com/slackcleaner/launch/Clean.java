@@ -30,16 +30,14 @@ public class Clean {
 	 *            to keep track of how many messages are deleted
 	 * @throws Exception
 	 */
-	public void processClean(Integer countMessageDeleted) throws Exception {
-		// get context from properties file
-		Context ctx = new Context();
+	public void processClean(Integer countMessageDeleted, Context ctx) throws Exception {
 
 		String baseUrl = ctx.getBaseUrl();
 		String token = ctx.getToken();
 		String apiList = ctx.getApiList();
 		String apiDelete = ctx.getApiDelete();
 		String channel = ctx.getChannel();
-
+		
 		String completeListUrl = baseUrl + apiList + "?token=" + token + "&channel=" + channel;
 		String jsonResponse = getHTML(completeListUrl);
 		JsonObject jsonObject = new JsonParser().parse(jsonResponse).getAsJsonObject();
@@ -58,7 +56,7 @@ public class Clean {
 		System.out.println("Ok ! (" + countMessageDeleted + " messages deleted yet)");
 		boolean hasMore = jsonObject.get("has_more").getAsBoolean();
 		if (hasMore) {
-			processClean(countMessageDeleted); // et ça boucle, et ça boucle :)
+			processClean(countMessageDeleted,ctx); // et ça boucle, et ça boucle :)
 		} else {
 			System.out.println("Job's done !");
 		}
