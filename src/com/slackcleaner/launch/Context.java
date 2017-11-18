@@ -22,13 +22,14 @@ public class Context {
 	 */
 	public Context() {
 		ResourceBundle bundle = ResourceBundle.getBundle("com.slackcleaner.config.config");
-		
+
 		this.baseUrl = bundle.getString("slack.api.baseurl");
 		this.apiDelete = bundle.getString("slack.api.chat.delete");
 		this.apiList = bundle.getString("slack.api.channels.history");
 		
 	}
 	
+
 	public void setToken(String token) {
 		this.token = token;
 	}
@@ -36,6 +37,7 @@ public class Context {
 	public void setChannel(String channel) {
 		this.channel = channel;
 	}
+
 
 	public String getToken() {
 		return token;
