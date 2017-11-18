@@ -25,7 +25,9 @@ public class Clean {
 	/**
 	 * Loop until there is no more messages returned by slack channels.list method
 	 * recursively calls itself
-	 * @param countMessageDeleted to keep track of how many messages are deleted
+	 * 
+	 * @param countMessageDeleted
+	 *            to keep track of how many messages are deleted
 	 * @throws Exception
 	 */
 	public void processClean(Integer countMessageDeleted) throws Exception {
@@ -43,7 +45,12 @@ public class Clean {
 		JsonObject jsonObject = new JsonParser().parse(jsonResponse).getAsJsonObject();
 		JsonArray jsonMessages = jsonObject.get("messages").getAsJsonArray();
 		for (String message : listMessages(jsonMessages)) {
-			Thread.sleep(1100);
+			/*
+			 * Slack api does not accept more than 1 request per second except a small
+			 * burst. To allow us to clean a full channel of thousand message, we'll just
+			 * let the batch run and be patient :)
+			 */
+			Thread.sleep(1001);
 
 			getHTML(baseUrl + apiDelete + "?token=" + token + "&channel=" + channel + "&ts=" + message);
 		}
@@ -57,10 +64,13 @@ public class Clean {
 		}
 
 	}
+
 	/**
-	 * parse the response as a JsonArray to get the timestamp of each message in the list.
-	 * this timestamp is the unique key used for delete method in slack
-	 * @param array JSonArray from channels.list 
+	 * parse the response as a JsonArray to get the timestamp of each message in the
+	 * list. this timestamp is the unique key used for delete method in slack
+	 * 
+	 * @param array
+	 *            JSonArray from channels.list
 	 * @return list of timestamps as String
 	 * @throws Exception
 	 */
@@ -75,6 +85,7 @@ public class Clean {
 
 		return messages;
 	}
+
 	/**
 	 * @return today's date nicely formatted for logging
 	 */
