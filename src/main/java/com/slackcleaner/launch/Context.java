@@ -21,7 +21,7 @@ public class Context {
 	 * Context constructor : pick info from the config.properties file.
 	 */
 	public Context() {
-		ResourceBundle bundle = ResourceBundle.getBundle("com.slackcleaner.config.config");
+		ResourceBundle bundle = ResourceBundle.getBundle("config");
 
 		this.baseUrl = bundle.getString("slack.api.baseurl");
 		this.apiDelete = bundle.getString("slack.api.chat.delete");

@@ -18,7 +18,7 @@ import com.google.gson.JsonParser;
  */
 
 /**
- * @author sleray
+ * @author sleray 
  *
  */
 public class Clean {
