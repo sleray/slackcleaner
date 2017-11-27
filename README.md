@@ -9,12 +9,14 @@ With their api, we can loop on all the messages to remove them.
 Unfortunately, we only can call api once each second to avoid a http rate limit exception. So run the batch, get a coffee and log in slack to see messages disappearing slowly :)
 
 ## Prerequisites
+
 For the clean method there is three mandatory arguments for the main method of the launcher : 
 (Method name) **token** and **channelId**
 
 # Methods supported
 * clean token channelId
 * clist token [channelId1,channelId2,...]
+
 
 # Get your OAuth token
 go in your slack menu > manage Apps > build 
