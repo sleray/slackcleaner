@@ -16,7 +16,11 @@ public class Context {
 	private  String apiDelete;
 	private  String apiList ;
 	private  String baseUrl ;
+	private String version;
 	
+
+
+
 	/**
 	 * Context constructor : pick info from the config.properties file.
 	 */
@@ -26,6 +30,7 @@ public class Context {
 		this.baseUrl = bundle.getString("slack.api.baseurl");
 		this.apiDelete = bundle.getString("slack.api.chat.delete");
 		this.apiList = bundle.getString("slack.api.channels.history");
+		this.version = bundle.getString("version");
 		
 	}
 	
@@ -57,6 +62,10 @@ public class Context {
 	
 	public String getBaseUrl() {
 		return baseUrl;
+	}
+	
+	public String getVersion() {
+		return version;
 	}
 	
 
