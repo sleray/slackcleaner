@@ -3,6 +3,11 @@
  */
 package com.slackcleaner.launch;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * @author sleray
  *
@@ -17,19 +22,26 @@ public class Launcher {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
+		// get context from properties file
 		Context ctx = new Context();
+		ctx.setToken(args[1]);
 		printTitle(ctx.getVersion());
 
-		if (METHOD_CLEAN.equals(args[0])) {
-			// get context from properties file
-			
-			ctx.setToken(args[1]);
+		if (METHOD_CLEAN.equals(args[0])) {	
 			ctx.setChannel(args[2]);
 
 			Clean clean = new Clean();
 			clean.processClean(0, ctx);
 		} else if (METHOD_CLIST.equals(args[0])) {
-			// TODO Clist feature
+			Clist clist = new Clist();
+			//build a list of channelIds
+			List<String> listChannel = new ArrayList<>();
+			listChannel = new LinkedList<String>(Arrays.asList(args)); 
+			listChannel.remove(0); //remove method argument
+			listChannel.remove(0); //remove token
+			for (String channelId : listChannel) {
+				clist.processClist(0, ctx, channelId,null);
+			}
 
 		} else {
 			System.out.println("Run with those arguments : ");

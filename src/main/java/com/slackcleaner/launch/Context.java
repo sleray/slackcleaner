@@ -14,7 +14,8 @@ public class Context {
 	private  String token;
 	private  String channel;
 	private  String apiDelete;
-	private  String apiList ;
+	private  String apiInfo ;
+	private  String apiHistory ;
 	private  String baseUrl ;
 	private String version;
 	
@@ -29,11 +30,20 @@ public class Context {
 
 		this.baseUrl = bundle.getString("slack.api.baseurl");
 		this.apiDelete = bundle.getString("slack.api.chat.delete");
-		this.apiList = bundle.getString("slack.api.channels.history");
+		this.apiHistory = bundle.getString("slack.api.channels.history");
+		this.apiInfo = bundle.getString("slack.api.channels.info");
 		this.version = bundle.getString("version");
 		
 	}
 	
+
+	/**
+	 * @return the apiHistory
+	 */
+	public String getApiHistory() {
+		return apiHistory;
+	}
+
 
 	public void setToken(String token) {
 		this.token = token;
@@ -56,8 +66,8 @@ public class Context {
 		return apiDelete;
 	}
 	
-	public String getApiList() {
-		return apiList;
+	public String getApiInfo() {
+		return apiInfo;
 	}
 	
 	public String getBaseUrl() {

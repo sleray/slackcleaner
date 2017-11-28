@@ -36,11 +36,11 @@ public class Clean {
 
 		String baseUrl = ctx.getBaseUrl();
 		String token = ctx.getToken();
-		String apiList = ctx.getApiList();
+		String apiHistory = ctx.getApiHistory();
 		String apiDelete = ctx.getApiDelete();
 		String channel = ctx.getChannel();
 
-		String completeListUrl = baseUrl + apiList + "?token=" + token + "&channel=" + channel;
+		String completeListUrl = baseUrl + apiHistory + "?token=" + token + "&channel=" + channel+"&count=1000";
 		String jsonResponse = getHTML(completeListUrl);
 		JsonObject jsonObject = new JsonParser().parse(jsonResponse).getAsJsonObject();
 		JsonArray jsonMessages = jsonObject.get("messages").getAsJsonArray();
