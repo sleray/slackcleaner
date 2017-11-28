@@ -2,7 +2,7 @@
 
 Welcome to slack cleaner batch !
 
-If your have a channel full of messages in slack that you want to clear, slack free plan doesn't offer a handy solution.
+If you have a channel full of messages in slack that you want to clear, slack free plan doesn't offer a handy solution.
 
 With their api, we can loop on all the messages to remove them.
 
